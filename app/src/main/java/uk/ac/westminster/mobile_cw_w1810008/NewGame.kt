@@ -10,6 +10,9 @@ import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 
 class NewGame : AppCompatActivity() {
+
+    var arith1 = createArith()
+    var arith2 = createArith()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_game)
@@ -20,22 +23,30 @@ class NewGame : AppCompatActivity() {
         val greaterButton: Button = findViewById(R.id.greater)
         val lesserButton: Button = findViewById(R.id.lesser)
         val equalButton: Button = findViewById(R.id.equal)
-         var switch:Boolean =true;
 
-       // while (switch){
-        val (a, b) = createArith()
-        val (c, d) = createArith()
+
+
+        val (a, b) = arith1
+        val (c, d) = arith2
         textView1.text = b
         textView2.text = d
 
+        fun samplefun(x:Pair<Int,String>,y:Pair<Int,String>){
+            val (a,b)=x
+            val (c,d)=y
+            textView1.text=b;
+            textView2.text=d;
+        }
 
         greaterButton.setOnClickListener {
             if (a > c) {
                 buildPopUpCorrect()
+                samplefun(createArith(),createArith())
 
             } else {
 
                 buildPopUpIncorrect()
+                samplefun(createArith(),createArith())
             }
 
         }
@@ -44,10 +55,12 @@ class NewGame : AppCompatActivity() {
         lesserButton.setOnClickListener {
             if (a < c) {
                 buildPopUpCorrect()
+                samplefun(createArith(),createArith())
 
             } else {
 
                 buildPopUpIncorrect()
+                samplefun(createArith(),createArith())
             }
 
         }
@@ -55,10 +68,12 @@ class NewGame : AppCompatActivity() {
         equalButton.setOnClickListener {
             if (a == c) {
                 buildPopUpCorrect()
+                samplefun(createArith(),createArith())
 
             } else {
 
                 buildPopUpIncorrect()
+                samplefun(createArith(),createArith())
             }
 
         }
@@ -79,6 +94,7 @@ class NewGame : AppCompatActivity() {
     }
         popUp.show()
 
+
     }
 
 
@@ -93,12 +109,10 @@ class NewGame : AppCompatActivity() {
 
         }
 
-        popUp.setNegativeButton("Exit"){
-                _: DialogInterface, i: Int ->
 
-
-        }
         popUp.show();
+
+
     }
 
 
