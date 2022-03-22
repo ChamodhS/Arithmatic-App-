@@ -1,68 +1,106 @@
 package uk.ac.westminster.mobile_cw_w1810008
 
+import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Html
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 
 class NewGame : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_game)
 
-        val textView1:TextView = findViewById(R.id.textView1)
-        val textView2:TextView = findViewById(R.id.textView2)
-        val message:TextView = findViewById(R.id.notice)
-        val (a,b) = createArith()
-        val (c,d) =createArith()
-        textView1.text=b
-        textView2.text =d
+        val textView1: TextView = findViewById(R.id.textView1)
+        val textView2: TextView = findViewById(R.id.textView2)
+        val message: TextView = findViewById(R.id.notice)
+        val greaterButton: Button = findViewById(R.id.greater)
+        val lesserButton: Button = findViewById(R.id.lesser)
+        val equalButton: Button = findViewById(R.id.equal)
+         var switch:Boolean =true;
 
-
-        val greaterButton : Button = findViewById(R.id.greater)
-        val lesserButton : Button = findViewById(R.id.lesser)
-        val equalButton : Button = findViewById(R.id.equal)
+       // while (switch){
+        val (a, b) = createArith()
+        val (c, d) = createArith()
+        textView1.text = b
+        textView2.text = d
 
 
         greaterButton.setOnClickListener {
-            if (a>c){
-                    message.text="Correct!"
+            if (a > c) {
+                buildPopUpCorrect()
 
-            }
-            else{
+            } else {
 
-                message.text="Wrong!"
+                buildPopUpIncorrect()
             }
 
         }
 
 
         lesserButton.setOnClickListener {
-            if (a<c){
-                message.text="Correct!"
+            if (a < c) {
+                buildPopUpCorrect()
 
-            }
-            else{
+            } else {
 
-                message.text="Wrong!"
+                buildPopUpIncorrect()
             }
 
         }
 
         equalButton.setOnClickListener {
-            if (a==c){
-                message.text="Correct!"
+            if (a == c) {
+                buildPopUpCorrect()
 
-            }
-            else{
+            } else {
 
-                message.text="Wrong!"
+                buildPopUpIncorrect()
             }
 
         }
 
+    //}
+    }
+
+    //creating correct alert
+    fun buildPopUpCorrect(){
+    val popUp = AlertDialog.Builder(this);
+    popUp.setMessage("CORRECT!")
+    popUp.setPositiveButton("Continue")
+
+
+
+    { _: DialogInterface, i: Int ->
 
     }
+        popUp.show()
+
+    }
+
+
+    fun buildPopUpIncorrect(){
+        val popUp = AlertDialog.Builder(this);
+        popUp.setMessage("WRONG!!")
+        popUp.setPositiveButton("Continue")
+
+
+
+        { _: DialogInterface, i: Int ->
+
+        }
+
+        popUp.setNegativeButton("Exit"){
+                _: DialogInterface, i: Int ->
+
+
+        }
+        popUp.show();
+    }
+
 
 
     //create function for returning random numbers

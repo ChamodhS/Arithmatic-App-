@@ -21,9 +21,9 @@ class MainActivity : AppCompatActivity() {
         aboutButton.setOnClickListener {
 
             val popUp = AlertDialog.Builder(this);
-            popUp.setTitle("Student ID: w1810008 Author: S.M.C.P Samaranayake");
+            popUp.setTitle("Student ID: w1810008"+"\n"+ "Author: S.M.C.P Samaranayake");
             popUp.setMessage(R.string.pledge)
-            popUp.setPositiveButton("Okay") { dialogInterface: DialogInterface, i: Int ->
+            popUp.setPositiveButton("Okay") { _: DialogInterface, i: Int ->
 
 
             }
