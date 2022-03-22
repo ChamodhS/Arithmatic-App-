@@ -3,7 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/chamo/AndroidStudioProjects/Mobile_cw_w1810008/app/src/main/res/layout/activity_main.xml" value="0.34646739130434784" />
+        <entry key="..\:/Users/chamo/AndroidStudioProjects/Mobile_cw_w1810008/app/src/main/res/layout-land/activity_main.xml" value="0.30687830687830686" />
+        <entry key="..\:/Users/chamo/AndroidStudioProjects/Mobile_cw_w1810008/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/chamo/AndroidStudioProjects/Mobile_cw_w1810008/app/src/main/res/layout/activity_new_game.xml" value="0.18541666666666667" />
+        <entry key="..\:/Users/chamo/AndroidStudioProjects/Mobile_cw_w1810008/app/src/main/res/layout/new_game.xml" value="0.34646739130434784" />
+        <entry key="..\:/Users/chamo/AndroidStudioProjects/Mobile_cw_w1810008/app/src/main/res/layout/popup_window.xml" value="0.34646739130434784" />
       </map>
     </option>
   </component>
