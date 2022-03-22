@@ -2,6 +2,7 @@ package uk.ac.westminster.mobile_cw_w1810008
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import android.widget.TextView
 
 class NewGame : AppCompatActivity() {
@@ -11,13 +12,54 @@ class NewGame : AppCompatActivity() {
 
         val textView1:TextView = findViewById(R.id.textView1)
         val textView2:TextView = findViewById(R.id.textView2)
+        val message:TextView = findViewById(R.id.notice)
         val (a,b) = createArith()
         val (c,d) =createArith()
         textView1.text=b
         textView2.text =d
-        println(b)
-        println(d)
-        println(a+c)
+
+
+        val greaterButton : Button = findViewById(R.id.greater)
+        val lesserButton : Button = findViewById(R.id.lesser)
+        val equalButton : Button = findViewById(R.id.equal)
+
+
+        greaterButton.setOnClickListener {
+            if (a>c){
+                    message.text="Correct!"
+
+            }
+            else{
+
+                message.text="Wrong!"
+            }
+
+        }
+
+
+        lesserButton.setOnClickListener {
+            if (a<c){
+                message.text="Correct!"
+
+            }
+            else{
+
+                message.text="Wrong!"
+            }
+
+        }
+
+        equalButton.setOnClickListener {
+            if (a==c){
+                message.text="Correct!"
+
+            }
+            else{
+
+                message.text="Wrong!"
+            }
+
+        }
 
 
     }
