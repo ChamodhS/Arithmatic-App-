@@ -2,8 +2,6 @@ package uk.ac.westminster.mobile_cw_w1810008
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.Settings
-import android.widget.Button
 import android.widget.TextView
 
 class NewGame : AppCompatActivity() {
@@ -11,19 +9,15 @@ class NewGame : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_game)
 
-        var textView1:TextView = findViewById(R.id.textView1)
-        var textView2:TextView = findViewById(R.id.textView2)
-        var greaterButton :Button=findViewById(R.id.greater)
-        var lesserButton :Button=findViewById(R.id.lesser)
-        var  equalButton :Button=findViewById(R.id.equal)
-        var (a,b) = createArith()
-        var (c,d) =createArith()
-        textView1.text=b;
-        textView2.text =d;
+        val textView1:TextView = findViewById(R.id.textView1)
+        val textView2:TextView = findViewById(R.id.textView2)
+        val (a,b) = createArith()
+        val (c,d) =createArith()
+        textView1.text=b
+        textView2.text =d
         println(b)
         println(d)
-        val Arg1 =  a
-        val Arg2 = c
+        println(a+c)
 
 
     }
@@ -31,7 +25,7 @@ class NewGame : AppCompatActivity() {
 
     //create function for returning random numbers
     //passing argument as the upper limit
-    fun randomizer( x:Int):Int{
+    private fun randomizer( x:Int):Int{
 
         return (1..x).random()
     }
@@ -39,11 +33,9 @@ class NewGame : AppCompatActivity() {
 
     //declare operator
 
-    fun operator():String{
+    private fun operator():String{
 
-        var chance= randomizer(4)
-
-        var op = when (chance){
+        val op = when (randomizer(4)){
 
             1 -> ("+")
             2 -> ("-")
@@ -58,9 +50,9 @@ class NewGame : AppCompatActivity() {
     }
 
     //function to calculate two terms
-    fun calculator(varOne:Int,varSecond:Int,operator:String):Int{
+    private fun calculator(varOne:Int,varSecond:Int,operator:String):Int{
 
-        var total =when (operator){
+        val total =when (operator){
 
             "+" -> (varOne+varSecond)
             "-" -> (varOne-varSecond)
@@ -75,7 +67,7 @@ class NewGame : AppCompatActivity() {
 
     //return a list of variables in a list
 
-    fun getVars(terms:Int):MutableList<Int> {
+    private fun getVars(terms:Int):MutableList<Int> {
 
         val list = mutableListOf<Int>()
         var i =0
@@ -95,20 +87,20 @@ class NewGame : AppCompatActivity() {
 
 
 
-    //function to get string of arithmatic expression
 
 
 
-    fun calculator2(x:Int,y:MutableList<Int>):Pair<Int,String>{
+    //returning the arithmatic value and string as a pair
+    private fun calculator2(x:Int, y:MutableList<Int>):Pair<Int,String>{
 
         var total =0
-        var print="x";
+        var print="x"
 
         when (x){
 
             2 -> {
 
-                var op1 = operator()
+                val op1 = operator()
 
                 total = calculator(y[0],y[1],op1)
 
@@ -120,12 +112,12 @@ class NewGame : AppCompatActivity() {
             }
             3  ->{
 
-                var op1 = operator()
-                var op2 = operator()
+                val op1 = operator()
+                val op2 = operator()
 
                 total = calculator(calculator(y[0],y[1],op1),y[2],op2)
 
-                print = ("(${y[0]}" +op1+"${y[1]})"+"${op2}"+"${y[2]}")
+                print = ("(${y[0]}" +op1+"${y[1]})"+op2+"${y[2]}")
 
 
 
@@ -133,12 +125,12 @@ class NewGame : AppCompatActivity() {
             }
             4  -> {
 
-                var op1 = operator()
-                var op2 = operator()
-                var op3 = operator()
+                val op1 = operator()
+                val op2 = operator()
+                val op3 = operator()
                 total = calculator(calculator(calculator(y[0],y[1],op1),y[2],op2),y[3],op3)
 
-                print =("((${y[0]}" +op1+"${y[1]})"+"${op2}"+"${y[2]})"+op3+"${y[3]}")
+                print =("((${y[0]}" +op1+"${y[1]})"+op2+"${y[2]})"+op3+"${y[3]}")
 
 
 
@@ -151,13 +143,13 @@ class NewGame : AppCompatActivity() {
     }
 
 
-    //creation of aritmatic
-    fun createArith():Pair<Int,String>{
+    //creation of arithmetic
+    private fun createArith():Pair<Int,String>{
         // get the number of terms
-        var noTermsA = randomizer(4)
+        val noTermsA = (2..4).random()
 
         //get list of values
-        var valuesA = getVars(noTermsA)
+        val valuesA = getVars(noTermsA)
 
         //make calculations
         return calculator2(noTermsA,valuesA)
