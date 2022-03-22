@@ -71,6 +71,8 @@ class NewGame : AppCompatActivity() {
 
     }
 
+
+
     //select the number of terms
 
 
@@ -79,6 +81,62 @@ class NewGame : AppCompatActivity() {
         println(x)
 
 
+
+    }
+        //function to get string of arithmatic expression
+    fun printer(A:String,B:Int){
+
+        when (B){
+
+            2-> {
+                println("A"+A+"B")
+            }
+
+            3->{
+
+                println("(A"+A+"B)"+A+"C")
+            }
+
+            4 -> {
+
+                println("((A+B)+C)+D")
+            }
+
+        }
+
+
+
+    }
+
+
+    fun calculator2(x:Int,y:MutableList<Int>):Int{
+
+        var total = when (x){
+
+            2 -> calculator(y[0],y[1],operator())
+            3  -> calculator(calculator(y[0],y[1],operator()),y[2],operator())
+            else -> calculator(calculator(calculator(y[0],y[1],operator()),y[2],operator()),y[3],operator())
+        }
+
+        return total
+
+
+    }
+
+
+    //creation of aritmatic
+    fun createArith():Int{
+        // get the number of terms
+        var noTermsA = randomizer(4)
+
+
+        //get list of values
+        var valuesA = getVars(noTermsA)
+
+
+        //make calculations
+
+       return calculator2(noTermsA,valuesA)
 
     }
 
